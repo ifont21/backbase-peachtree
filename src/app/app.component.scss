@@ -1,0 +1,31 @@
+.wrapper {
+  display: grid;
+  min-height: 100vh;
+  height: 100%;
+  grid-template-areas: "header" "content" "footer";
+  grid-template-rows: 10% auto 5%;
+
+  &__header {
+    grid-area: header;
+  }
+
+  &__content {
+    position: relative;
+    grid-area: content;
+    background-image: url("/assets/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__foreground {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(0.3rem);
+  }
+
+  &__footer {
+    grid-area: footer;
+  }
+}
