@@ -1,0 +1,42 @@
+:host {
+    position: relative;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px 8px 10px 35px;
+    border: 1px solid #bfc4c4;
+    border-radius: 5px;
+  
+    &.ui-disabled {
+      background-color: #eaebec;
+    }
+  
+    &.invalid {
+      border: 1px solid red;
+    }
+  
+    &::-webkit-input-placeholder {
+      font-style: italic;
+      font-size: 1.4rem;
+    }
+  }
+  
+  .currency {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 2px;
+    left: 2px;
+    border-top: 1px solid transparent;
+    border-right: 1px solid #bfc4c4;
+    background-color: #f4f5f5;
+    height: calc(100% - 4px);
+    width: 28px;
+    border-top-left-radius: 5px 5px;
+    border-bottom-left-radius: 5px 5px;
+    color: #1a2d37;
+    font-size: 1.4rem;
+  }
+  

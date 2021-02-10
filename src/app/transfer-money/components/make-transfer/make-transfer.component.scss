@@ -1,0 +1,17 @@
+.transfer-form {
+  &__control {
+    padding: 12px 10px;
+    display: flex;
+    flex-flow: column;
+
+    label {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__action {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

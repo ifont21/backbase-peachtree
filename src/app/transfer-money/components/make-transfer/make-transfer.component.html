@@ -1,0 +1,53 @@
+<app-card>
+  <ng-template #title> <strong>Make</strong> Transfer </ng-template>
+
+  <form [formGroup]="form" class="transfer-form">
+    <div class="transfer-form__control">
+      <label>From Account</label>
+      <app-input-control formControlName="from"></app-input-control>
+    </div>
+
+    <div class="transfer-form__control">
+      <label>To Account</label>
+      <app-input-control
+        formControlName="to"
+        placeHolder="type an account name"
+        [invalid]="(toField?.dirty || toField?.touched) && toField?.invalid"
+      ></app-input-control>
+      <app-field-errors
+        [errors]="toField?.errors"
+        [dirty]="toField?.dirty"
+        [touched]="toField?.touched"
+        [invalid]="toField?.invalid"
+      ></app-field-errors>
+    </div>
+
+    <div class="transfer-form__control">
+      <label>Amount</label>
+      <app-money-input
+        formControlName="amount"
+        placeHolder="specify the amount"
+        [invalid]="
+          (amountField?.dirty || amountField?.touched) && amountField?.invalid
+        "
+      ></app-money-input>
+      <app-field-errors
+        [errors]="amountField?.errors"
+        [dirty]="amountField?.dirty"
+        [touched]="amountField?.touched"
+        [invalid]="amountField?.invalid"
+      ></app-field-errors>
+    </div>
+    <div class="transfer-form__action">
+      <app-submit-button (submitForm)="submitForm()"></app-submit-button>
+    </div>
+  </form>
+</app-card>
+
+<app-review
+  *ngIf="dialogOpened"
+  [amount]="form?.value?.amount"
+  [accountTo]="form?.value?.to"
+  (closeDialog)="closeDialog($event)"
+  (sendTransfer)="sendTransfer($event)"
+></app-review>

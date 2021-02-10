@@ -1,0 +1,29 @@
+<div class="review-transfer">
+  <div class="review-transfer__header">
+    <div><strong>Review</strong> Transfer</div>
+    <div class="review-transfer__close" (click)="closeDialog()">&#10005;</div>
+  </div>
+  <div class="review-transfer__body">
+    <div class="review-transfer__info review-transfer__info--question">
+      Are you ready to send out this transfer?
+    </div>
+    <div class="review-transfer__info">
+      <span class="review-transfer__label"
+        ><strong>it will be send to account:</strong></span
+      >
+      <span class="review-transfer__value">{{ accountTo }}</span>
+    </div>
+    <div class="review-transfer__info">
+      <span class="review-transfer__label"
+        ><strong>With the amount of:</strong></span
+      >
+      <span class="review-transfer__value">{{ amount | currency: "EUR" }}</span>
+    </div>
+  </div>
+  <div class="review-transfer__footer">
+    <button class="btn" (click)="closeDialog()">Close</button>
+    <button class="btn btn-primary" (click)="sendTransfer()">
+      Send Transfer
+    </button>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<input
+  type="number"
+  min="0"
+  [value]="virtualValue"
+  [disabled]="isDisabled"
+  [placeholder]="placeHolder"
+  [class.ui-disabled]="isDisabled"
+  [class.invalid]="invalid"
+  (input)="onInput($event.target.value)"
+  (focusout)="onFocus()"
+/>
+<div class="currency">&#8364;</div>

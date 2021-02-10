@@ -1,0 +1,19 @@
+input {
+  width: 100%;
+  padding: 10px 8px;
+  border: 1px solid #bfc4c4;
+  border-radius: 5px;
+
+  &.ui-disabled {
+    background-color: #eaebec;
+  }
+
+  &.invalid {
+    border: 1px solid red;
+  }
+
+  &::-webkit-input-placeholder {
+    font-style: italic;
+    font-size: 1.4rem;
+  }
+}

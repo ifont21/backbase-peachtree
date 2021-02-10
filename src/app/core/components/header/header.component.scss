@@ -1,7 +1,7 @@
 @import "main";
 
 .header {
-  padding: 2rem;
+  padding: 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,9 +11,5 @@
 
   &__title {
     color: $primary-blue-color;
-
-    &--enphasis{
-        font-weight: 700;
-    }
   }
 }
