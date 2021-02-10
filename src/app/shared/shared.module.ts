@@ -6,6 +6,7 @@ import { CardComponent } from './components/card/card.component';
 import { FieldErrorsComponent } from './components/field-errors/field-errors.component';
 import { InputControlComponent } from './components/input/input.component';
 import { MoneyInputComponent } from './components/money-input/money-input.component';
+import { DebitCreditPipe } from './pipes/debit-credit.pipe';
 
 @NgModule({
   imports: [BbUIModule, CommonModule, ReactiveFormsModule],
@@ -14,6 +15,7 @@ import { MoneyInputComponent } from './components/money-input/money-input.compon
     InputControlComponent,
     MoneyInputComponent,
     FieldErrorsComponent,
+    DebitCreditPipe,
   ],
   exports: [
     // Modules
@@ -26,6 +28,9 @@ import { MoneyInputComponent } from './components/money-input/money-input.compon
     InputControlComponent,
     MoneyInputComponent,
     FieldErrorsComponent,
+
+    // Pipes
+    DebitCreditPipe,
   ],
 })
 export class SharedModule {}

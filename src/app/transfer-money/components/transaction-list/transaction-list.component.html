@@ -1,0 +1,44 @@
+<app-card>
+  <ng-template #title> Transaction <strong>List</strong> </ng-template>
+  <div class="filter">
+    <!-- TODO: complete filter component here -->
+  </div>
+
+  <div class="transaction-list">
+    <div
+      class="transaction-list__item"
+      *ngFor="let transaction of summary"
+    >
+      <app-transaction-item class="item-block">
+        <div
+          [style.backgroundColor]="transaction.categoryCode"
+          data-test-hook="transactionColour"
+        ></div>
+        <div data-test-hook="transactionDate">
+          {{ transaction.dates.valueDate | date: "MMM. dd" }}
+        </div>
+        <div data-test-hook="transactionMerchantName">
+          {{ transaction.merchant.name }}
+        </div>
+        <div data-test-hook="transactionType">
+          {{ transaction.transaction.type }}
+        </div>
+        <div
+          data-test-hook="transactionAmount"
+          [class.credit]="
+            transaction.transaction.creditDebitIndicator === 'CRDT'
+          "
+          [class.debit]="
+            transaction.transaction.creditDebitIndicator === 'DBIT'
+          "
+        >
+          {{
+            transaction.transaction.amountCurrency.amount
+              | appDebitCredit: transaction.transaction.creditDebitIndicator
+              | currency: transaction.transaction.amountCurrency.currencyCode
+          }}
+        </div>
+      </app-transaction-item>
+    </div>
+  </div>
+</app-card>

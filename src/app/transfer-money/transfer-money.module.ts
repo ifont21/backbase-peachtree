@@ -3,17 +3,18 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { MakeTransferComponent } from './components/make-transfer/make-transfer.component';
 import { ReviewComponent } from './components/review/review.component';
-import { TransferListComponent } from './components/transfer-list/transfer-list.component';
-import { TransferMoneyComponent } from './transfer-money.component';
+import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
+import { TransactionService } from './services/transactions.service';
+import { TransferMoneyContainer } from './transfer-money.container';
 
 @NgModule({
   imports: [SharedModule],
   declarations: [
     MakeTransferComponent,
-    TransferListComponent,
-    TransferMoneyComponent,
+    TransactionListComponent,
+    TransferMoneyContainer,
     ReviewComponent,
   ],
-  providers: [CurrencyPipe],
+  providers: [CurrencyPipe, TransactionService],
 })
 export class TransferMoneyModule {}

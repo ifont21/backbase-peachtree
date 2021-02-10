@@ -1,0 +1,63 @@
+.transaction-list {
+  display: block;
+  height: 100%;
+
+  &__item {
+    border-bottom: 1px solid #bfc4c4;
+    overflow: auto;
+    height: 10rem;
+    padding: 14px 10px;
+
+    .credit {
+      color: green;
+    }
+
+    .debit {
+      color: red;
+    }
+
+    ::ng-deep {
+      [data-test-hook="transactionColour"] {
+        float: left;
+        height: 100%;
+        width: 6px;
+        background-color: black;
+        margin-right: 10px;
+      }
+
+      [data-test-hook="transactionDate"] {
+        float: left;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        margin-right: 40px;
+        font-size: 1.5rem;
+      }
+
+      [data-test-hook="transactionAmount"] {
+        float: right;
+        clear: right;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      [data-test-hook="transactionMerchantName"] {
+        font-size: 1.7rem;
+      }
+
+      [data-test-hook="transactionType"] {
+        color: gray;
+        font-size: 1.5rem;
+      }
+
+      .merchant-details {
+        float: left;
+        height: 100%;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+      }
+    }
+  }
+}

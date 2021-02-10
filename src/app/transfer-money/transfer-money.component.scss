@@ -1,6 +1,19 @@
 .transfer-money {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 30% 70%;
   gap: 3rem;
   height: 100%;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: center;
+
+  & > * {
+    &:first-child {
+      max-width: 400px;
+    }
+
+    &:last-child {
+      max-width: 850px;
+    }
+  }
 }
