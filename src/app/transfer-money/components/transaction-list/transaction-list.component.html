@@ -1,14 +1,11 @@
 <app-card>
   <ng-template #title> Transaction <strong>List</strong> </ng-template>
   <div class="filter">
-    <!-- TODO: complete filter component here -->
+    <app-filter (inputChange)="onFilter($event)"></app-filter>
   </div>
 
   <div class="transaction-list">
-    <div
-      class="transaction-list__item"
-      *ngFor="let transaction of summary"
-    >
+    <div class="transaction-list__item" *ngFor="let transaction of summary">
       <app-transaction-item class="item-block">
         <div
           [style.backgroundColor]="transaction.categoryCode"

@@ -53,7 +53,7 @@ export class MoneyInputComponent implements ControlValueAccessor {
   }
 
   writeValue(value: number): void {
-    this.virtualValue = value;
+    this.virtualValue = this.virtualValue === value ? 0 : value;
     this.value = value;
   }
 

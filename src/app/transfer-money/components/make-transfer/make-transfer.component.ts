@@ -7,6 +7,8 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { CreateTransactionService } from '../../services/create-transaction.service';
+import { TransactionService } from '../../services/transactions.service';
 
 const numberRequired = (): ValidatorFn => ({
   value,
@@ -45,7 +47,12 @@ export class MakeTransferComponent implements OnChanges {
 
   dialogOpened = false;
 
-  constructor(private fb: FormBuilder, private currencyPipe: CurrencyPipe) {
+  constructor(
+    private fb: FormBuilder,
+    private currencyPipe: CurrencyPipe,
+    private service: TransactionService,
+    private createTransaction: CreateTransactionService
+  ) {
     this.buildForm();
     this.disableControl('from');
   }
@@ -66,24 +73,29 @@ export class MakeTransferComponent implements OnChanges {
   }
 
   sendTransfer(): void {
-    const transfer = {
-      ...this.form.value,
-      from: this.myAccountAmount,
-    };
-
     this.dialogOpened = false;
+    this.createTransaction.clear();
+
+    const transaction = this.createTransaction
+      .addAmount(this.form.value.amount)
+      .addTo(this.form.value.to)
+      .get();
+
+    this.service.addNewTransaction(transaction);
+    this.form.reset(this.getResetvalues());
+  }
+
+  closeDialog(): void {
+    this.dialogOpened = false;
+  }
+
+  private getResetvalues(): { [key: string]: any } {
     const newValues = {
       ...this.form.getRawValue(),
       to: '',
       amount: null,
     };
-    this.form.reset(newValues);
-
-    // TODO update the transaction List
-  }
-
-  closeDialog(): void {
-    this.dialogOpened = false;
+    return newValues;
   }
 
   private buildForm(): void {

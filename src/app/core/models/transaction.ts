@@ -1,5 +1,5 @@
 export interface Dates {
-  valueDate: number;
+  valueDate: number | string;
 }
 
 export interface AmountCurrency {
@@ -19,6 +19,7 @@ export interface Merchant {
 }
 
 export interface TransactionSummary {
+  id?: string;
   categoryCode: string;
   dates: Dates;
   transaction: Transaction;

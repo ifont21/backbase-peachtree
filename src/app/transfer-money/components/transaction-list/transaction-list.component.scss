@@ -1,12 +1,15 @@
 .transaction-list {
   display: block;
   height: 100%;
+  padding: 0 10px;
+  max-height: 60vh;
+  overflow-y: auto;
 
   &__item {
     border-bottom: 1px solid #bfc4c4;
     overflow: auto;
     height: 10rem;
-    padding: 14px 10px;
+    padding: 14px 0;
 
     .credit {
       color: green;
@@ -58,6 +61,42 @@
         flex-flow: column;
         justify-content: center;
       }
+    }
+  }
+}
+
+.filter {
+  margin-bottom: 10px;
+
+  ::ng-deep {
+    .input-group {
+      display: flex;
+      padding: 0 10px;
+    }
+
+    .input-group-prepend {
+      border: 1px solid #bfc4c4;
+      border-right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      border-top-left-radius: 5px 5px;
+      border-bottom-left-radius: 5px 5px;
+      background-color: #f4f5f5;
+    }
+
+    .input-group-text {
+      color: gray;
+    }
+
+    .form-control {
+      width: 40%;
+      padding: 10px 8px;
+      border: 1px solid #bfc4c4;
+      border-radius: 5px;
+      border-top-left-radius: 0 0;
+      border-bottom-left-radius: 0 0;
     }
   }
 }

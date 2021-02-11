@@ -1,25 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { TransactionApiService } from 'src/app/core/api-services/transaction-api.service';
 import { TransactionSummary } from 'src/app/core/models/transaction';
-import { map } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
 @Injectable()
 export class TransactionService {
+  private transactions$ = new BehaviorSubject<TransactionSummary[]>([]);
+
+  transactions$$ = this.transactions$.asObservable();
+
   constructor(private transactionApiService: TransactionApiService) {}
 
-  getTransactions(): Observable<TransactionSummary[]> {
-    return this.transactionApiService.getTransactions().pipe(
-      map((transactions: TransactionSummary[]) => {
-        return transactions.sort(this.sortByDate);
-      })
-    );
+  fetchTransactions(): void {
+    this.getTransactions()
+      .pipe(take(1))
+      .subscribe((transactions: TransactionSummary[]) => {
+        this.transactions$.next(transactions);
+      });
   }
 
-  private sortByDate(
-    first: TransactionSummary,
-    second: TransactionSummary
-  ): number {
+  addNewTransaction(transaction: TransactionSummary): void {
+    const newState = [...this.transactions$.value, transaction];
+    this.transactions$.next(newState);
+  }
+
+  sortByDate(first: TransactionSummary, second: TransactionSummary): number {
     const dateFirst = new Date(first?.dates?.valueDate);
     const dateSecond = new Date(second?.dates?.valueDate);
 
@@ -28,5 +34,9 @@ export class TransactionService {
     if (dateFirst < dateSecond) return 1;
 
     return 0;
+  }
+
+  private getTransactions(): Observable<TransactionSummary[]> {
+    return this.transactionApiService.getTransactions();
   }
 }

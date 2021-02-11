@@ -1,6 +1,7 @@
 {
-  "/dev": {
+  "/dev/*": {
     "target": "https://r9vdzv10vd.execute-api.eu-central-1.amazonaws.com",
-    "secure": false
+    "secure": false,
+    "changeOrigin": true
   }
 }
