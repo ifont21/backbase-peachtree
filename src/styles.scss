@@ -1,4 +1,5 @@
-@import "styles/scss/main";
+@import "./styles/scss/main.scss";
+@import "main";
 
 html {
   font-size: 62.5%;
@@ -18,29 +19,4 @@ body {
   font-size: 1.6rem;
   margin: 0;
   padding: 0;
-}
-
-.btn {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 3px;
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-.btn-primary {
-  background-color: orangered;
-  color: white;
-}
-
-.btn-secondary {
-  border: 1px solid;
-}
-
-.title-icon {
-  margin-right: 15px;
-  font-size: 2.7rem;
-  position: relative;
-  top: 1px;
-  font-weight: 700;
 }

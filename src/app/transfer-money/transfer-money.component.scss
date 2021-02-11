@@ -6,14 +6,13 @@
   width: 80%;
   margin: 0 auto;
   justify-content: center;
+  max-width: 120rem;
+}
 
-  & > * {
-    &:first-child {
-      max-width: 400px;
-    }
-
-    &:last-child {
-      max-width: 850px;
-    }
+@media (max-width: 1028px) {
+  .transfer-money {
+    grid-template-columns: 80%;
+    width: 100%;
+    padding: 0 10%;
   }
 }

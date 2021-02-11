@@ -1,21 +1,23 @@
+@import "variables";
+
 :host {
   display: flex;
 }
 
 input {
   width: 100%;
-  padding: 10px 10px;
-  border: 1px solid #bfc4c4;
-  border-radius: 5px;
+  padding: 1rem 1rem;
+  border: 1px solid $border-gray-color;
+  border-radius: 0.5rem;
   border-top-left-radius: 0 0;
   border-bottom-left-radius: 0 0;
 
   &.ui-disabled {
-    background-color: #eaebec;
+    background-color: $disabled-gray-color;
   }
 
   &.invalid {
-    border: 1px solid red;
+    border: 1px solid $primary-red;
   }
 
   &::-webkit-input-placeholder {
@@ -28,12 +30,12 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #bfc4c4;
-  background-color: #f4f5f5;
+  border: 1px solid $border-gray-color;
+  background-color: $secondary-gray-color;
   border-right: 0;
-  width: 50px;
-  border-top-left-radius: 5px 5px;
-  border-bottom-left-radius: 5px 5px;
-  color: #1a2d37;
+  width: 5rem;
+  border-top-left-radius: 0.5rem 0.5rem;
+  border-bottom-left-radius: 0.5rem 0.5rem;
+  color: $primary-dark-color;
   font-size: 1.4rem;
 }

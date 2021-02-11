@@ -1,5 +1,7 @@
+@import "variables";
+
 .field-errors {
-  color: red;
+  color: $primary-red;
   padding: 8px 0;
   font-size: 1.3rem;
 }

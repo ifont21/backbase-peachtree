@@ -11,6 +11,7 @@ import { TransactionService } from './services/transactions.service';
     <app-make-transfer
       [myAccountAmount]="myAccount$ | async"
     ></app-make-transfer>
+
     <app-transaction-list
       [summary]="transactions$ | async"
     ></app-transaction-list>

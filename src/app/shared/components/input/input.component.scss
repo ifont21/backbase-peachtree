@@ -1,15 +1,17 @@
+@import "variables";
+
 input {
   width: 100%;
-  padding: 10px 8px;
-  border: 1px solid #bfc4c4;
-  border-radius: 5px;
+  padding: 1rem 0.8rem;
+  border: 1px solid $border-gray-color;
+  border-radius: 0.5rem;
 
   &.ui-disabled {
-    background-color: #eaebec;
+    background-color: $disabled-gray-color;
   }
 
   &.invalid {
-    border: 1px solid red;
+    border: 1px solid $primary-red;
   }
 
   &::-webkit-input-placeholder {

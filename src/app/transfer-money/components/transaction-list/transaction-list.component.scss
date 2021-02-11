@@ -1,30 +1,32 @@
+@import "variables";
+
 .transaction-list {
   display: block;
   height: 100%;
-  padding: 0 10px;
+  padding: 0 1rem;
   max-height: 60vh;
   overflow-y: auto;
 
   &__item {
-    border-bottom: 1px solid #bfc4c4;
+    border-bottom: 1px solid rgba($border-gray-color, 0.4);
     overflow: auto;
     height: 10rem;
-    padding: 14px 0;
+    padding: 1.4rem 0;
 
     .credit {
-      color: green;
+      color: $primary-green;
     }
     .debit {
-      color: red;
+      color: $primary-red;
     }
 
     ::ng-deep {
       [data-test-hook="transactionColour"] {
         float: left;
         height: 100%;
-        width: 6px;
-        background-color: black;
-        margin-right: 10px;
+        width: 0.6rem;
+        background-color: $primary-black-color;
+        margin-right: 1rem;
       }
 
       [data-test-hook="transactionDate"] {
@@ -32,7 +34,7 @@
         height: 100%;
         display: flex;
         align-items: center;
-        margin-right: 40px;
+        margin-right: 4rem;
         font-size: 1.5rem;
       }
 
@@ -49,7 +51,7 @@
       }
 
       [data-test-hook="transactionType"] {
-        color: gray;
+        color: $primary-gray-color;
         font-size: 1.5rem;
       }
 
@@ -65,35 +67,35 @@
 }
 
 .filter {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 
   ::ng-deep {
     .input-group {
       display: flex;
-      padding: 0 10px;
+      padding: 0 1rem;
     }
 
     .input-group-prepend {
-      border: 1px solid #bfc4c4;
+      border: 1px solid $border-gray-color;
       border-right: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 50px;
-      border-top-left-radius: 5px 5px;
-      border-bottom-left-radius: 5px 5px;
-      background-color: #f4f5f5;
+      width: 5rem;
+      border-top-left-radius: 0.5rem 0.5rem;
+      border-bottom-left-radius: 0.5rem 0.5rem;
+      background-color: $secondary-gray-color;
     }
 
     .input-group-text {
-      color: gray;
+      color: $primary-gray-color;
     }
 
     .form-control {
       width: 40%;
-      padding: 10px 8px;
-      border: 1px solid #bfc4c4;
-      border-radius: 5px;
+      padding: 1rem 0.8rem;
+      border: 1px solid $border-gray-color;
+      border-radius: 0.5rem;
       border-top-left-radius: 0 0;
       border-bottom-left-radius: 0 0;
 
