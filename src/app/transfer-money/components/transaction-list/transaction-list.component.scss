@@ -48,6 +48,10 @@
 
       [data-test-hook="transactionMerchantName"] {
         font-size: 1.7rem;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
 
       [data-test-hook="transactionType"] {
@@ -61,6 +65,7 @@
         display: flex;
         flex-flow: column;
         justify-content: center;
+        width: 30%;
       }
     }
   }
@@ -102,6 +107,16 @@
       &::-webkit-input-placeholder {
         font-style: italic;
         font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  .filter {
+    ::ng-deep {
+      .form-control {
+        width: 100%;
       }
     }
   }

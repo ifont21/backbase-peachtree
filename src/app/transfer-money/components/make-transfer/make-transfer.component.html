@@ -52,8 +52,7 @@
 
 <app-review
   *ngIf="dialogOpened"
-  [amount]="form?.value?.amount"
-  [accountTo]="form?.value?.to"
+  [values]="form?.value"
   (closeDialog)="closeDialog($event)"
   (sendTransfer)="sendTransfer($event)"
 ></app-review>

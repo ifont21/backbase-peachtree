@@ -1,36 +1,29 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
-import { CreateTransactionService } from '../../services/create-transaction.service';
-import { TransactionService } from '../../services/transactions.service';
-
-const numberRequired = (): ValidatorFn => ({
-  value,
-}: AbstractControl): { [key: string]: any | null } => {
-  return !value ? { required: true } : null;
-};
-
-const notEnoughBalance = (currentValue: number): ValidatorFn => ({
-  value,
-}: AbstractControl): { [key: string]: any | null } => {
-  return currentValue < value
-    ? { message: 'There is not enough balance' }
-    : null;
-};
+  Component,
+  Inject,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  CustomValidators,
+  CustomValidatorsProvider,
+  CUSTOM_VALIDATORS,
+} from '@app/core/validators/validators';
+import { CreateTransactionService } from '@app/transfer-money/services/create-transaction.service';
+import { TransactionService } from '@app/transfer-money/services/transactions.service';
 
 @Component({
   selector: 'app-make-transfer',
   templateUrl: './make-transfer.component.html',
   styleUrls: ['./make-transfer.component.scss'],
+  providers: [CustomValidatorsProvider],
 })
 export class MakeTransferComponent implements OnChanges {
   @Input() myAccountAmount: number;
+
   form: FormGroup;
 
   get fromField() {
@@ -51,7 +44,8 @@ export class MakeTransferComponent implements OnChanges {
     private fb: FormBuilder,
     private currencyPipe: CurrencyPipe,
     private service: TransactionService,
-    private createTransaction: CreateTransactionService
+    private createTransaction: CreateTransactionService,
+    @Inject(CUSTOM_VALIDATORS) private customValidators: CustomValidators
   ) {
     this.buildForm();
     this.disableControl('from');
@@ -118,9 +112,9 @@ export class MakeTransferComponent implements OnChanges {
 
   private setNotEnoughValidatorForAmount(accountMoney: number) {
     this.amountField.setValidators([
-      numberRequired(),
+      this.customValidators().numberRequired(),
       Validators.min(0),
-      notEnoughBalance(accountMoney),
+      this.customValidators().notEnoughBalance(accountMoney),
     ]);
   }
 }

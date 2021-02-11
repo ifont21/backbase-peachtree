@@ -11,13 +11,15 @@
       <span class="review-transfer__label"
         ><strong>it will be send to account:</strong></span
       >
-      <span class="review-transfer__value">{{ accountTo }}</span>
+      <span class="review-transfer__value">{{ values?.to }}</span>
     </div>
     <div class="review-transfer__info">
       <span class="review-transfer__label"
         ><strong>With the amount of:</strong></span
       >
-      <span class="review-transfer__value">{{ amount | currency: "EUR" }}</span>
+      <span class="review-transfer__value">{{
+        values?.amount | currency: "EUR"
+      }}</span>
     </div>
   </div>
   <div class="review-transfer__footer">

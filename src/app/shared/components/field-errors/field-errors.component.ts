@@ -1,13 +1,16 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-
-export interface ControlErrors {
-  [error: string]: any;
-}
+import { Component, Inject, Input, OnChanges } from '@angular/core';
+import {
+  ControlErrors,
+  ErrorHandlerMessages,
+  HANDLER,
+  handlerProvider,
+} from '@app/core/handlers/error-message.handler';
 
 @Component({
   selector: 'app-field-errors',
   templateUrl: './field-errors.component.html',
   styleUrls: ['./field-errors.component.scss'],
+  providers: [handlerProvider],
 })
 export class FieldErrorsComponent implements OnChanges {
   @Input() errors: ControlErrors;
@@ -18,19 +21,13 @@ export class FieldErrorsComponent implements OnChanges {
   errorMsg: string;
   hasErrors: boolean;
 
+  constructor(
+    @Inject(HANDLER) private errorMessageHandler: ErrorHandlerMessages
+  ) {}
+
   ngOnChanges(): void {
-    this.errorMsg = this.getErrorMessages(this.errors ?? {});
-  }
-
-  private getErrorMessages({ required, min, message }: ControlErrors): string {
-    if (required) {
-      return 'This field is required';
-    }
-
-    if (min) {
-      return 'Negative numbers are not allowed';
-    }
-
-    return message;
+    this.errorMsg = this.errorMessageHandler().getErrorMessageForControls(
+      this.errors ?? {}
+    );
   }
 }

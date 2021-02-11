@@ -6,17 +6,16 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./review.component.scss'],
 })
 export class ReviewComponent {
-  @Input() accountTo: string;
-  @Input() amount: string;
+  @Input() values: { to: string; amount: number };
 
   @Output('closeDialog') close: EventEmitter<void> = new EventEmitter();
   @Output('sendTransfer') send: EventEmitter<void> = new EventEmitter();
 
   closeDialog(): void {
-    this.close.emit(void 0);
+    this.close.emit();
   }
 
   sendTransfer(): void {
-    this.send.emit(void 0);
+    this.send.emit();
   }
 }

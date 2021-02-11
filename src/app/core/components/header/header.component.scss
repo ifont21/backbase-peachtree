@@ -14,3 +14,13 @@
     color: $primary-blue-color;
   }
 }
+
+@media (max-width: 540px) {
+  .header {
+    justify-content: center;
+
+    &__title {
+      display: none;
+    }
+  }
+}

@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { FilterTransactionService } from '@app/transfer-money/services/filter-transaction.service';
 import { TransactionSummary } from 'src/app/core/models/transaction';
-import { FilterTransactionService } from '../../services/filter-transaction.service';
-import { TransactionService } from '../../services/transactions.service';
 
 @Component({
   selector: 'app-transaction-list',
