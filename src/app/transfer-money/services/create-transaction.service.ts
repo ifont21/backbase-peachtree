@@ -38,7 +38,7 @@ export class CreateTransactionService {
           amount: 0,
           currencyCode: 'EUR',
         },
-        type: 'Transfer',
+        type: 'Transaction',
         creditDebitIndicator: 'DBIT',
       },
       merchant: {

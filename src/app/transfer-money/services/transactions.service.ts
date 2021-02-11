@@ -6,9 +6,14 @@ import { take } from 'rxjs/operators';
 
 @Injectable()
 export class TransactionService {
+  private readonly initialAccountAmount = 5824.76;
   private transactions$ = new BehaviorSubject<TransactionSummary[]>([]);
 
+  // * Simulating Initial Value
+  private myAccount$ = new BehaviorSubject<number>(this.initialAccountAmount);
+
   transactions$$ = this.transactions$.asObservable();
+  myAccount$$ = this.myAccount$.asObservable();
 
   constructor(private transactionApiService: TransactionApiService) {}
 
@@ -20,9 +25,14 @@ export class TransactionService {
       });
   }
 
-  addNewTransaction(transaction: TransactionSummary): void {
+  addNewTransaction(transaction: TransactionSummary, myAccount: number): void {
     const newState = [...this.transactions$.value, transaction];
+
     this.transactions$.next(newState);
+    this.UpdateMyAccount(
+      +transaction?.transaction?.amountCurrency?.amount ?? 0,
+      this.myAccount$.value
+    );
   }
 
   sortByDate(first: TransactionSummary, second: TransactionSummary): number {
@@ -34,6 +44,12 @@ export class TransactionService {
     if (dateFirst < dateSecond) return 1;
 
     return 0;
+  }
+
+  private UpdateMyAccount(amount: number, current: number): void {
+    if (current < amount) return;
+
+    this.myAccount$.next(current - amount);
   }
 
   private getTransactions(): Observable<TransactionSummary[]> {

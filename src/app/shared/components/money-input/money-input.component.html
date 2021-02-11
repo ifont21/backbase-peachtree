@@ -1,3 +1,7 @@
+<div class="currency">
+  <ng-container *ngIf="currency === 'EUR'; else usd"> &#8364; </ng-container>
+  <ng-template #usd> &#36; </ng-template>
+</div>
 <input
   type="number"
   min="0"
@@ -9,4 +13,3 @@
   (input)="onInput($event.target.value)"
   (focusout)="onFocus()"
 />
-<div class="currency">&#8364;</div>

@@ -1,5 +1,8 @@
 <app-card>
-  <ng-template #title> <strong>Make</strong> Transfer </ng-template>
+  <ng-template #title>
+    <span class="title-icon"><i class="lni lni-credit-cards"></i></span>
+    <span><strong>Make</strong> Transfer</span>
+  </ng-template>
 
   <form [formGroup]="form" class="transfer-form">
     <div class="transfer-form__control">
@@ -39,7 +42,10 @@
       ></app-field-errors>
     </div>
     <div class="transfer-form__action">
-      <app-submit-button (submitForm)="submitForm()"></app-submit-button>
+      <app-submit-button
+        [class.btn-disabled]="form.invalid"
+        (submitForm)="submitForm()"
+      ></app-submit-button>
     </div>
   </form>
 </app-card>

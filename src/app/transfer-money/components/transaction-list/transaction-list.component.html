@@ -1,5 +1,8 @@
 <app-card>
-  <ng-template #title> Transaction <strong>List</strong> </ng-template>
+  <ng-template #title>
+    <span class="title-icon"><i class="lni lni-list"></i></span>
+    <span>Transactions <strong>List</strong></span>
+  </ng-template>
   <div class="filter">
     <app-filter (inputChange)="onFilter($event)"></app-filter>
   </div>
@@ -31,8 +34,8 @@
         >
           {{
             transaction.transaction.amountCurrency.amount
-              | appDebitCredit: transaction.transaction.creditDebitIndicator
               | currency: transaction.transaction.amountCurrency.currencyCode
+              | appDebitCredit: transaction.transaction.creditDebitIndicator
           }}
         </div>
       </app-transaction-item>

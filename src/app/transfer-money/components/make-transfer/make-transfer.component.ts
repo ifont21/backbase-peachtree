@@ -13,7 +13,7 @@ import { TransactionService } from '../../services/transactions.service';
 const numberRequired = (): ValidatorFn => ({
   value,
 }: AbstractControl): { [key: string]: any | null } => {
-  return value === 0 ? { required: true } : null;
+  return !value ? { required: true } : null;
 };
 
 const notEnoughBalance = (currentValue: number): ValidatorFn => ({
@@ -81,7 +81,7 @@ export class MakeTransferComponent implements OnChanges {
       .addTo(this.form.value.to)
       .get();
 
-    this.service.addNewTransaction(transaction);
+    this.service.addNewTransaction(transaction, this.myAccountAmount);
     this.form.reset(this.getResetvalues());
   }
 
@@ -102,7 +102,7 @@ export class MakeTransferComponent implements OnChanges {
     this.form = this.fb.group({
       from: [],
       to: ['', Validators.required],
-      amount: 0,
+      amount: null,
     });
   }
 

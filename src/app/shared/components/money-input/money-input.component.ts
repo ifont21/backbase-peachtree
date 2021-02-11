@@ -26,10 +26,18 @@ export class MoneyInputComponent implements ControlValueAccessor {
     this.placeHolderInput = value ?? '';
   }
 
+  @Input() set currency(value: 'EUR' | 'USD') {
+    this.currencySymbol = value ?? this.currencySymbol;
+  }
+
   @Input() invalid: boolean;
 
   get placeHolder() {
     return this.placeHolderInput;
+  }
+
+  get currency() {
+    return this.currencySymbol;
   }
 
   value = 0;
@@ -41,6 +49,7 @@ export class MoneyInputComponent implements ControlValueAccessor {
   onTouch = () => {};
 
   private placeHolderInput = '';
+  private currencySymbol: 'EUR' | 'USD' = 'EUR';
 
   onInput(value: string): void {
     this.value = +value;

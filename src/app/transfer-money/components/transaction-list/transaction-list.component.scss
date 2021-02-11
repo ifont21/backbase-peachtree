@@ -14,7 +14,6 @@
     .credit {
       color: green;
     }
-
     .debit {
       color: red;
     }
@@ -97,6 +96,11 @@
       border-radius: 5px;
       border-top-left-radius: 0 0;
       border-bottom-left-radius: 0 0;
+
+      &::-webkit-input-placeholder {
+        font-style: italic;
+        font-size: 1.4rem;
+      }
     }
   }
 }

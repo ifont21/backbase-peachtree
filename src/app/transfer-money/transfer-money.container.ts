@@ -8,7 +8,9 @@ import { TransactionService } from './services/transactions.service';
 @Component({
   selector: 'app-transfer-money',
   template: `<div class="transfer-money">
-    <app-make-transfer [myAccountAmount]="5824.76"></app-make-transfer>
+    <app-make-transfer
+      [myAccountAmount]="myAccount$ | async"
+    ></app-make-transfer>
     <app-transaction-list
       [summary]="transactions$ | async"
     ></app-transaction-list>
@@ -18,6 +20,7 @@ import { TransactionService } from './services/transactions.service';
 export class TransferMoneyContainer implements OnInit {
   transactions$: Observable<TransactionSummary[]>;
   searchTerm$: Observable<string>;
+  myAccount$: Observable<number>;
 
   constructor(
     private service: TransactionService,
@@ -25,6 +28,7 @@ export class TransferMoneyContainer implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.myAccount$ = this.service.myAccount$$;
     this.searchTerm$ = this.filterService.searchTerm$$;
 
     this.transactions$ = combineLatest([
