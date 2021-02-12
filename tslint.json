@@ -83,7 +83,7 @@
         "check-typecast"
       ]
     },
-    "component-class-suffix": true,
+    "component-class-suffix": [true, "Component", "Container"],
     "contextual-lifecycle": true,
     "directive-class-suffix": true,
     "no-conflicting-lifecycle": true,
@@ -99,6 +99,9 @@
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
+    "cyclomatic-complexity": [true, 20],
+    "no-irregular-whitespace": true,
+    "prefer-object-spread": true,
     "directive-selector": [true, "attribute", "app", "camelCase"],
     "component-selector": [true, "element", "app", "kebab-case"]
   }

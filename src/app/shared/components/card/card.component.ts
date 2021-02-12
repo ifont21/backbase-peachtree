@@ -6,6 +6,5 @@ import { Component, ContentChild, TemplateRef } from '@angular/core';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-@ContentChild('title') titleTpl: TemplateRef<any>;
-
+  @ContentChild('title') titleTpl: TemplateRef<any>;
 }

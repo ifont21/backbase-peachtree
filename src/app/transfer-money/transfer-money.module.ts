@@ -7,14 +7,14 @@ import { TransactionListComponent } from './components/transaction-list/transact
 import { CreateTransactionService } from './services/create-transaction.service';
 import { FilterTransactionService } from './services/filter-transaction.service';
 import { TransactionService } from './services/transactions.service';
-import { TransferMoneyComponent } from './transfer-money.container';
+import { TransferMoneyContainer } from './transfer-money.container';
 
 @NgModule({
   imports: [SharedModule],
   declarations: [
     MakeTransferComponent,
     TransactionListComponent,
-    TransferMoneyComponent,
+    TransferMoneyContainer,
     ReviewComponent,
   ],
   providers: [

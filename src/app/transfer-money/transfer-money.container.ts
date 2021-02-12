@@ -18,7 +18,7 @@ import { TransactionService } from './services/transactions.service';
   </div>`,
   styleUrls: ['./transfer-money.component.scss'],
 })
-export class TransferMoneyComponent implements OnInit {
+export class TransferMoneyContainer implements OnInit {
   transactions$: Observable<TransactionSummary[]>;
   searchTerm$: Observable<string>;
   myAccount$: Observable<number>;

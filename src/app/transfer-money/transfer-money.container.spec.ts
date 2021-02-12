@@ -7,13 +7,13 @@ import {
 } from '@angular/core/testing';
 import { FilterTransactionService } from './services/filter-transaction.service';
 import { TransactionService } from './services/transactions.service';
-import { TransferMoneyComponent } from './transfer-money.container';
+import { TransferMoneyContainer } from './transfer-money.container';
 import * as transactionsMock from '@app/shared/bb-ui/mock-data/transactions.json';
 import { of } from 'rxjs';
 
 describe('TransferMoneyContainer', () => {
-  let component: TransferMoneyComponent;
-  let fixture: ComponentFixture<TransferMoneyComponent>;
+  let component: TransferMoneyContainer;
+  let fixture: ComponentFixture<TransferMoneyContainer>;
   let service: jasmine.SpyObj<TransactionService>;
   let filterService: FilterTransactionService;
 
@@ -28,7 +28,7 @@ describe('TransferMoneyContainer', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TransferMoneyComponent],
+      declarations: [TransferMoneyContainer],
       providers: [
         { provide: TransactionService, useValue: mockService },
         { provide: FilterTransactionService, useValue: mockFilterService },
@@ -38,7 +38,7 @@ describe('TransferMoneyContainer', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TransferMoneyComponent);
+    fixture = TestBed.createComponent(TransferMoneyContainer);
     component = fixture.componentInstance;
     service = TestBed.inject(TransactionService) as any;
     filterService = TestBed.inject(FilterTransactionService);
