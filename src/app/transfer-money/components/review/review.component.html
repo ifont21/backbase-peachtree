@@ -1,7 +1,7 @@
 <div class="review-transfer">
   <div class="review-transfer__header">
     <div><strong>Review</strong> Transfer</div>
-    <div class="review-transfer__close" (click)="closeDialog()">&#10005;</div>
+    <div class="review-transfer__close" (click)="close()">&#10005;</div>
   </div>
   <div class="review-transfer__body">
     <div class="review-transfer__info review-transfer__info--question">
@@ -23,8 +23,8 @@
     </div>
   </div>
   <div class="review-transfer__footer">
-    <button class="btn btn-secondary" (click)="closeDialog()">Close</button>
-    <button class="btn btn-primary" (click)="sendTransfer()">
+    <button class="btn btn-secondary" (click)="close()">Close</button>
+    <button class="btn btn-primary" (click)="addTransfer()">
       Send Transfer
     </button>
   </div>

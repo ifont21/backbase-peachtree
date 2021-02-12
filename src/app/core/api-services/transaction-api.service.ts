@@ -9,11 +9,13 @@ import * as transactionJSON from '@app/shared/bb-ui/mock-data/transactions.json'
   providedIn: 'root',
 })
 export class TransactionApiService {
+  private baseURL = 'http://localhost:4200/dev';
+
   constructor(private http: HttpClient) {}
 
   getTransactions(): Observable<TransactionSummary[]> {
     return this.http
-      .get<TransactionSummary[]>('http://localhost:4200/dev/transactions')
+      .get<TransactionSummary[]>(`${this.baseURL}/transactions`)
       .pipe(catchError((_) => of(transactionJSON.data)));
   }
 }

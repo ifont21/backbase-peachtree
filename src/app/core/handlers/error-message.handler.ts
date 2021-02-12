@@ -4,9 +4,11 @@ export interface ControlErrors {
   [error: string]: any;
 }
 
-export type ErrorHandlerMessages = () => {
+interface ErrorHandlers {
   getErrorMessageForControls: (errors: ControlErrors) => string;
-};
+}
+
+export type ErrorHandlerMessages = () => ErrorHandlers;
 
 export const HANDLER = new InjectionToken<ErrorHandlerMessages>(
   'get error messages'
@@ -17,7 +19,7 @@ export const handlerProvider = {
   useValue: errorMessageHandler,
 };
 
-function errorMessageHandler() {
+function errorMessageHandler(): ErrorHandlers {
   const getErrorMessageForControls = ({
     required,
     min,
@@ -31,7 +33,7 @@ function errorMessageHandler() {
       return 'Negative numbers are not allowed';
     }
 
-    return message;
+    return message ?? '';
   };
 
   return {

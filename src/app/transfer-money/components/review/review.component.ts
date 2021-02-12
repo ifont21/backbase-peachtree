@@ -8,14 +8,14 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ReviewComponent {
   @Input() values: { to: string; amount: number };
 
-  @Output('closeDialog') close: EventEmitter<void> = new EventEmitter();
-  @Output('sendTransfer') send: EventEmitter<void> = new EventEmitter();
+  @Output() closeDialog: EventEmitter<void> = new EventEmitter();
+  @Output() sendTransfer: EventEmitter<void> = new EventEmitter();
 
-  closeDialog(): void {
-    this.close.emit();
+  close(): void {
+    this.closeDialog.emit();
   }
 
-  sendTransfer(): void {
-    this.send.emit();
+  addTransfer(): void {
+    this.sendTransfer.emit();
   }
 }

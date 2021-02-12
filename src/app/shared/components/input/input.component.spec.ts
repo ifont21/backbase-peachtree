@@ -2,16 +2,15 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { MoneyInputComponent } from './money-input.component';
+import { InputControlComponent } from './input.component';
 
 @Component({
   selector: 'app-form-component',
   template: ` <form [formGroup]="form">
-    <app-money-input
+    <app-input-control
       formControlName="input"
       placeHolder="enter value"
-      currency="USD"
-    ></app-money-input>
+    ></app-input-control>
   </form>`,
 })
 class FormComponent {
@@ -19,7 +18,7 @@ class FormComponent {
 
   constructor() {
     this.form = new FormGroup({
-      input: new FormControl(null),
+      input: new FormControl(''),
     });
   }
 }
@@ -31,7 +30,7 @@ describe('FormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ReactiveFormsModule],
-      declarations: [FormComponent, MoneyInputComponent],
+      declarations: [FormComponent, InputControlComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   });
@@ -49,13 +48,13 @@ describe('FormComponent', () => {
   it('should check the initial value', () => {
     const value = component.form.get('input').value;
 
-    expect(value).toBeNull();
+    expect(value).toBe('');
   });
 
   it('should add a new value to our input', () => {
-    component.form.get('input').setValue(23);
+    component.form.get('input').setValue('Ana');
 
-    expect(component.form.value.input).toBe(23);
+    expect(component.form.value.input).toBe('Ana');
   });
 
   it('should input be able to be disabled', () => {
@@ -66,11 +65,11 @@ describe('FormComponent', () => {
 
   it('should we add a new value by triggering the input event', () => {
     const input = fixture.debugElement.query(By.css('input'));
-    input.triggerEventHandler('input', { target: { value: 2.3 } });
+    input.triggerEventHandler('input', { target: { value: 'Ana' } });
 
     fixture.detectChanges();
 
-    expect(component.form.value.input).toBe(2.3);
+    expect(component.form.value.input).toBe('Ana');
     expect(component.form.get('input').touched).toBeTruthy();
   });
 });

@@ -1,10 +1,12 @@
 import { InjectionToken } from '@angular/core';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
-export type CustomValidators = () => {
+interface Validators {
   numberRequired: () => ValidatorFn;
   notEnoughBalance: (currentValue: number) => ValidatorFn;
-};
+}
+
+export type CustomValidators = () => Validators;
 
 export const CUSTOM_VALIDATORS = new InjectionToken<CustomValidators>(
   'get custom validators'
@@ -15,7 +17,7 @@ export const CustomValidatorsProvider = {
   useValue: customValidators,
 };
 
-function customValidators() {
+function customValidators(): Validators {
   const numberRequired = (): ValidatorFn => ({
     value,
   }: AbstractControl): { [key: string]: any | null } => {

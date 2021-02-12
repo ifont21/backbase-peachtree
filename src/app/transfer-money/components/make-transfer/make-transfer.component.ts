@@ -6,7 +6,13 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import {
   CustomValidators,
   CustomValidatorsProvider,
@@ -26,15 +32,15 @@ export class MakeTransferComponent implements OnChanges {
 
   form: FormGroup;
 
-  get fromField() {
+  get fromField(): AbstractControl {
     return this.form.get('from');
   }
 
-  get toField() {
+  get toField(): AbstractControl {
     return this.form.get('to');
   }
 
-  get amountField() {
+  get amountField(): AbstractControl {
     return this.form.get('amount');
   }
 
@@ -57,7 +63,7 @@ export class MakeTransferComponent implements OnChanges {
     if (!myAccountAmountCurrent || !this.form) return;
 
     this.setMyAccountInputValue(myAccountAmountCurrent);
-    this.setNotEnoughValidatorForAmount(myAccountAmountCurrent);
+    this.setAmountValidators(myAccountAmountCurrent);
   }
 
   submitForm(): void {
@@ -75,7 +81,7 @@ export class MakeTransferComponent implements OnChanges {
       .addTo(this.form.value.to)
       .get();
 
-    this.service.addNewTransaction(transaction, this.myAccountAmount);
+    this.service.addNewTransaction(transaction);
     this.form.reset(this.getResetvalues());
   }
 
@@ -110,7 +116,7 @@ export class MakeTransferComponent implements OnChanges {
     );
   }
 
-  private setNotEnoughValidatorForAmount(accountMoney: number) {
+  private setAmountValidators(accountMoney: number): void {
     this.amountField.setValidators([
       this.customValidators().numberRequired(),
       Validators.min(0),

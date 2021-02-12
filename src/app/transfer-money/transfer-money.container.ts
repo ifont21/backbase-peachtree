@@ -18,7 +18,7 @@ import { TransactionService } from './services/transactions.service';
   </div>`,
   styleUrls: ['./transfer-money.component.scss'],
 })
-export class TransferMoneyContainer implements OnInit {
+export class TransferMoneyComponent implements OnInit {
   transactions$: Observable<TransactionSummary[]>;
   searchTerm$: Observable<string>;
   myAccount$: Observable<number>;
@@ -58,5 +58,5 @@ export class TransferMoneyContainer implements OnInit {
     string
   ]) => {
     return [transactions.sort(this.service.sortByDate), term];
-  };
+  }
 }

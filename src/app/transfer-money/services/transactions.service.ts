@@ -25,7 +25,7 @@ export class TransactionService {
       });
   }
 
-  addNewTransaction(transaction: TransactionSummary, myAccount: number): void {
+  addNewTransaction(transaction: TransactionSummary): void {
     const newState = [...this.transactions$.value, transaction];
 
     this.transactions$.next(newState);

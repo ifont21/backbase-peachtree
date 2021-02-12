@@ -3,7 +3,7 @@ import { TransactionSummary } from 'src/app/core/models/transaction';
 
 @Injectable()
 export class CreateTransactionService {
-  transaction: TransactionSummary;
+  private transaction: TransactionSummary;
 
   constructor() {
     this.transaction = this.defaultValues();

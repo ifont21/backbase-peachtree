@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import {
-  AbstractInputValueAccessor,
+  AbstractInputValueComponent,
   setvalueAccesorProvider,
 } from '@app/core/abstracts/input-value-accessor';
 
@@ -10,14 +10,14 @@ import {
   styleUrls: ['./money-input.component.scss'],
   providers: [setvalueAccesorProvider(MoneyInputComponent)],
 })
-export class MoneyInputComponent extends AbstractInputValueAccessor<number> {
+export class MoneyInputComponent extends AbstractInputValueComponent<number> {
   @Input() set currency(value: 'EUR' | 'USD') {
     this.currencySymbol = value ?? this.currencySymbol;
   }
 
   @Input() invalid: boolean;
 
-  get currency() {
+  get currency(): 'EUR' | 'USD' {
     return this.currencySymbol;
   }
 

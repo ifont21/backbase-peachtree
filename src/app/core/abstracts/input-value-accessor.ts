@@ -1,7 +1,9 @@
 import { Component, forwardRef, Input, Type } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-export function setvalueAccesorProvider(provider: Type<any>) {
+export function setvalueAccesorProvider(
+  provider: Type<any>
+): any {
   return {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => provider),
@@ -10,27 +12,28 @@ export function setvalueAccesorProvider(provider: Type<any>) {
 }
 
 @Component({ template: '' })
-export abstract class AbstractInputValueAccessor<T = any>
+export abstract class AbstractInputValueComponent<T = any>
   implements ControlValueAccessor {
   @Input() set placeHolder(value: string) {
     this.placeHolderInput = value ?? '';
   }
 
-  onChange = (_: any) => {};
-  onTouch = () => {};
-
-  get value() {
-    return this.ownValue;
-  }
-
-  get placeHolder() {
-    return this.placeHolderInput;
-  }
+  isDisabled: boolean;
 
   protected ownValue: T;
 
-  isDisabled: boolean;
   private placeHolderInput = '';
+
+  onChange = (_: any) => {};
+  onTouch = () => {};
+
+  get value(): T {
+    return this.ownValue;
+  }
+
+  get placeHolder(): string {
+    return this.placeHolderInput;
+  }
 
   abstract writeValue(value: any): void;
 

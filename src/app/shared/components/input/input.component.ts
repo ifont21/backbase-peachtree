@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import {
-  AbstractInputValueAccessor,
+  AbstractInputValueComponent,
   setvalueAccesorProvider,
 } from '@app/core/abstracts/input-value-accessor';
 
@@ -10,7 +10,7 @@ import {
   styleUrls: ['./input.component.scss'],
   providers: [setvalueAccesorProvider(InputControlComponent)],
 })
-export class InputControlComponent extends AbstractInputValueAccessor<string> {
+export class InputControlComponent extends AbstractInputValueComponent<string> {
   @Input() invalid: boolean;
 
   onInput(value: any): void {

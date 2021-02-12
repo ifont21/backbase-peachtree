@@ -1,5 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
-import { TransferMoneyContainer } from './transfer-money/transfer-money.container';
+import { TransferMoneyComponent } from './transfer-money/transfer-money.container';
 
 const routes: Routes = [
   {
@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'transfer',
-    component: TransferMoneyContainer,
+    component: TransferMoneyComponent,
   },
 ];
 
